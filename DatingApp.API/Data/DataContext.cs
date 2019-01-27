@@ -64,6 +64,10 @@ namespace DatingApp.API.Data
                 .WithMany(u => u.MessagesReceived)
                 .HasForeignKey(u => u.RecipientId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            
+            // Following is Global Query Filter.
+            builder.Entity<Photo>().HasQueryFilter(p => p.IsApproved);
         }
     }
 }
